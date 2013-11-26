@@ -38,14 +38,14 @@
                     <div class="text-center soft-over">
                         <strong>OR</strong>
                     </div>
-                    {{#if errorMessage}}
-                        <div class="alert alert-danger">{{errorMessage}}</div>
-                    {{/if}}                    
                     <hr class="soft">
                         <div class="well">
                             <input name="user[remember_me]" type="hidden" value="1" />
-                            {{input value=username type="text" placeholder="Email" classNames="form-control input-lg top"}}
-                            {{input value=password type="text" placeholder="Password" classNames="form-control input-lg bottom"}}
+                            {{#if errorMessage}}
+                                <p class="text-danger">{{errorMessage}}</p>
+                            {{/if}}                    
+                            {{input value=email type="text" placeholder="Email" classNames="form-control input-lg top"}}
+                            {{input value=password type="password" placeholder="Password" classNames="form-control input-lg bottom"}}
                             {{input class="btn-info btn btn-block" type="submit" value="Sign In"}}
                         </div>
                     <p>

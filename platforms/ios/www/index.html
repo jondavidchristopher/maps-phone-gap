@@ -7,15 +7,16 @@
         <link rel="stylesheet" type="text/css" href="css/app.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/ember-animated-outlet.css">
         <title>Skizzors</title>
     </head>
     <body>
-        <!-- Default Template  -->
+
+        <!-- Default Container  -->
         <script type="text/x-handlebars">
             {{outlet}}
         </script>
 
+        <!-- Joyride Tour  -->
         <script type="text/x-handlebars" data-template-name="joyride">
             <div class="text-center"> 
                 <h1>On a Joyride</h1>
@@ -26,30 +27,33 @@
             </div>    
         </script>        
 
+        <!-- Login  -->
         <script type="text/x-handlebars" data-template-name="signin">
-            <form accept-charset="UTF-8" action="/users/login" class="form-horizontal form-slim" id="new_user" method="post">
+            <form accept-charset="UTF-8" class="form-horizontal form-slim" {{action signin on="submit"}}>
                 <div class="text-center">
                     <h1>Skizzors</h1>
                     <p>
                         <a class="btn btn-primary btn-lg btn-block " href="/users/auth/facebook"><i class="fa fa-facebook"></i> Sign in with Facebook </a>
                     </p>
-
                     <div class="text-center soft-over">
                         <strong>OR</strong>
                     </div>
+                    {{#if errorMessage}}
+                        <div class="alert alert-danger">{{errorMessage}}</div>
+                    {{/if}}                    
                     <hr class="soft">
                         <div class="well">
-                            <input autofocus="autofocus" class="form-control input-lg top" id="user_email" name="user[email]" placeholder="Email" required="required" type="text" value="" />
-                            <input autocomplete="off" class="form-control input-lg bottom" id="user_password" name="user[password]" placeholder="Password" type="password" />
                             <input name="user[remember_me]" type="hidden" value="1" />
-                            <button class="btn-info btn btn-block" name="button" type="submit">Sign in</button>
+                            {{input value=username type="text" placeholder="Email" classNames="form-control input-lg top"}}
+                            {{input value=password type="password" placeholder="Password" classNames="form-control input-lg bottom"}}
+                            {{input class="btn-info btn btn-block" type="submit" value="Sign In"}}
                         </div>
                     <p>
                     <div class="btn-group btn-group-justified">
-                        {{#link-to "signup" classNames="btn btn-default btn-xs"}}
+                        {{#link-to "signup" classNames="btn btn-default btn-sm"}}
                             Sign up
                         {{/link-to}}
-                        {{#link-to "forgot_password" classNames="btn btn-default btn-xs"}}
+                        {{#link-to "forgot_password" classNames="btn btn-default btn-sm"}}
                             Forgot password?
                         {{/link-to}}
                     </div>  
@@ -59,6 +63,7 @@
             </form>
         </script>        
 
+        <!-- SignUp  -->
         <script type="text/x-handlebars" data-template-name="signup">
             <form accept-charset="UTF-8" action="/users/login" class="form-horizontal form-slim" id="new_user" method="post">
                 <div class="text-center">
@@ -86,10 +91,10 @@
                         </div>
                     <p>
                     <div class="btn-group btn-group-justified">
-                        {{#link-to "signin" classNames="btn btn-default btn-xs"}}
+                        {{#link-to "signin" classNames="btn btn-default btn-sm"}}
                             Sign in
                         {{/link-to}}
-                        {{#link-to "forgot_password" classNames="btn btn-default btn-xs"}}
+                        {{#link-to "forgot_password" classNames="btn btn-default btn-sm"}}
                             Forgot password?
                         {{/link-to}}
                     </div>  
@@ -99,6 +104,7 @@
             </form>
         </script>        
 
+        <!-- ForgotPassword  -->
         <script type="text/x-handlebars" data-template-name="forgot_password">
             <form accept-charset="UTF-8" action="/users/login" class="form-horizontal form-slim" id="new_user" method="post">
                 <div class="text-center">
@@ -111,10 +117,10 @@
                       </div>
                     <p>
                     <div class="btn-group btn-group-justified">
-                        {{#link-to "signin" classNames="btn btn-default btn-xs"}}
+                        {{#link-to "signin" classNames="btn btn-default btn-sm"}}
                             Sign in
                         {{/link-to}}
-                        {{#link-to "signup" classNames="btn btn-default btn-xs"}}
+                        {{#link-to "signup" classNames="btn btn-default btn-sm"}}
                             Sign up
                         {{/link-to}}
                     </div>
@@ -122,13 +128,15 @@
             </form>
         </script>        
 
+        <!-- Geolocation Progress  -->
         <script type="text/x-handlebars" data-template-name="geolocate">
             <div class="text-center">
                 <h1><i class="fa fa-gear fa-spin"></i> Locating You</h1>
             </div> 
         </script>        
 
-        <script type="text/x-handlebars" data-template-name="geolocate-error">
+        <!-- Geolocation Failure  -->
+        <script type="text/x-handlebars" data-template-name="geolocate-failure">
             <div class="text-center"> 
                 <h3><i class="fa fa-meh-o"></i> This is embarrassing</h3>
                 
@@ -138,9 +146,7 @@
             </div>                
         </script>
 
-
-
-
+        <!-- Bars  -->
         <script type="text/x-handlebars" data-template-name="bars">
             Some list of bars
             <ul>
@@ -155,7 +161,6 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/handlebars-1.1.2.js"></script>
         <script type="text/javascript" src="js/ember-1.2.0.js"></script>
-        <script type="text/javascript" src="js/ember-animated-outlet.js"></script>        
         <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>
