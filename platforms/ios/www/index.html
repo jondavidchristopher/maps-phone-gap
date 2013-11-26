@@ -13,22 +13,117 @@
     <body>
         <!-- Default Template  -->
         <script type="text/x-handlebars">
-            {{animatedOutlet name="main"}}
+            {{outlet}}
         </script>
 
         <script type="text/x-handlebars" data-template-name="joyride">
             <div class="text-center"> 
                 <h1>On a Joyride</h1>
                 <p>This is a placeholder for a magical introduction guide to the app.</p>
-                {{#link-to "geolocate" animations="main:slideLeft" classNames="btn btn-primary btn-small"}}
+                {{#link-to "signin" classNames="btn btn-primary btn-small"}}
                     Enter in Skizzors
                 {{/link-to}}
             </div>    
         </script>        
 
+        <script type="text/x-handlebars" data-template-name="signin">
+            <form accept-charset="UTF-8" action="/users/login" class="form-horizontal form-slim" id="new_user" method="post">
+                <div class="text-center">
+                    <h1>Skizzors</h1>
+                    <p>
+                        <a class="btn btn-primary btn-lg btn-block " href="/users/auth/facebook"><i class="fa fa-facebook"></i> Sign in with Facebook </a>
+                    </p>
+
+                    <div class="text-center soft-over">
+                        <strong>OR</strong>
+                    </div>
+                    <hr class="soft">
+                        <div class="well">
+                            <input autofocus="autofocus" class="form-control input-lg top" id="user_email" name="user[email]" placeholder="Email" required="required" type="text" value="" />
+                            <input autocomplete="off" class="form-control input-lg bottom" id="user_password" name="user[password]" placeholder="Password" type="password" />
+                            <input name="user[remember_me]" type="hidden" value="1" />
+                            <button class="btn-info btn btn-block" name="button" type="submit">Sign in</button>
+                        </div>
+                    <p>
+                    <div class="btn-group btn-group-justified">
+                        {{#link-to "signup" classNames="btn btn-default btn-xs"}}
+                            Sign up
+                        {{/link-to}}
+                        {{#link-to "forgot_password" classNames="btn btn-default btn-xs"}}
+                            Forgot password?
+                        {{/link-to}}
+                    </div>  
+
+                    </p>
+                </div> 
+            </form>
+        </script>        
+
+        <script type="text/x-handlebars" data-template-name="signup">
+            <form accept-charset="UTF-8" action="/users/login" class="form-horizontal form-slim" id="new_user" method="post">
+                <div class="text-center">
+                    <h1>Skizzors</h1>
+                    <p>
+                        <a class="btn btn-primary btn-lg btn-block " href="/users/auth/facebook"><i class="fa fa-facebook"></i> Sign up with Facebook </a>
+                    </p>
+
+                    <div class="text-center soft-over">
+                        <strong>OR</strong>
+                    </div>
+                    <hr class="soft">
+                        <div class="well">
+                            <p>
+                              <input autofocus="autofocus" class="form-control input-lg top" id="user_name" name="user[name]" placeholder="Name" required="required" type="text" />
+                              <input class="form-control input-lg bottom" id="user_email" name="user[email]" placeholder="Email" required="required" type="text" value="" />
+                            </p>
+
+                            <p>
+                              <input autocomplete="off" class="form-control input-lg top" id="user_password" name="user[password]" placeholder="Password" type="password" />
+                              <input autocomplete="off" class="form-control input-lg bottom" id="user_password_confirmation" name="user[password_confirmation]" placeholder="Password Confirmation" type="password" />
+                            </p>
+
+                            <button class="btn-info btn btn-block" name="button" type="submit">Sign up</button>
+                        </div>
+                    <p>
+                    <div class="btn-group btn-group-justified">
+                        {{#link-to "signin" classNames="btn btn-default btn-xs"}}
+                            Sign in
+                        {{/link-to}}
+                        {{#link-to "forgot_password" classNames="btn btn-default btn-xs"}}
+                            Forgot password?
+                        {{/link-to}}
+                    </div>  
+
+                    </p>
+                </div> 
+            </form>
+        </script>        
+
+        <script type="text/x-handlebars" data-template-name="forgot_password">
+            <form accept-charset="UTF-8" action="/users/login" class="form-horizontal form-slim" id="new_user" method="post">
+                <div class="text-center">
+                    <h1>Skizzors</h1>
+                      <div class="well">
+                        <p>
+                          <input autofocus="autofocus" class="form-control input-lg" id="user_email" name="user[email]" placeholder="Email" required="required" type="text" value="" />
+                        </p>
+                        <button class="btn-info btn btn-block" name="button" type="submit">Send me reset password instructions</button>
+                      </div>
+                    <p>
+                    <div class="btn-group btn-group-justified">
+                        {{#link-to "signin" classNames="btn btn-default btn-xs"}}
+                            Sign in
+                        {{/link-to}}
+                        {{#link-to "signup" classNames="btn btn-default btn-xs"}}
+                            Sign up
+                        {{/link-to}}
+                    </div>
+                </div>    
+            </form>
+        </script>        
 
         <script type="text/x-handlebars" data-template-name="geolocate">
-            <div class="text-center"> 
+            <div class="text-center">
                 <h1><i class="fa fa-gear fa-spin"></i> Locating You</h1>
             </div> 
         </script>        

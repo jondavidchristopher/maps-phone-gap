@@ -4,6 +4,9 @@ $(function() {
 
         App.Router.map(function() {
             this.resource('joyride');
+            this.resource('signin');
+            this.resource('signup');
+            this.resource('forgot_password');
             this.resource('geolocate');
             this.resource('geolocate-error');
             this.resource('bars');
