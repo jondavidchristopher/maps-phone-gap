@@ -76,7 +76,7 @@ $(function() {
                 var self = this, data = this.getProperties('username','password');
                 // Clear out any error messages.
                 this.set('errorMessage', null);                
-                Ember.$.post('someurl', data).then(function(response) {
+                Ember.$.post('localhost:3000', data).then(function(response) {
                     self.set('errorMessage', response.message);
                     if (response.success) {
                         self.set('token', response.token);                        
